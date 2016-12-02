@@ -24,6 +24,7 @@ Thumbs.db
 # DIR #
 /node_modules/*
 /vendor/*
+/upload/*
 
 # Images #
 *.jpg
