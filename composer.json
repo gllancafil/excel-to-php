@@ -1,0 +1,14 @@
+{
+    "name": "gabrielvargas/phpexcel",
+    "require-dev": {
+    },
+    "authors": [
+        {
+            "name": "Gabriel Vargas",
+            "email": "gabva14@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpexcel": "^1.8"
+    }
+}
