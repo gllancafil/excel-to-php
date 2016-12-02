@@ -29,14 +29,16 @@ require __DIR__.'/vendor/autoload.php';
     return $archivos;
   }
 
-  $archivos = listarArchvios('./upload', array('xlsx','xls'));
+  $folder = './upload';
+
+  $archivos = listarArchvios($folder, array('xlsx','xls'));
 
 if(isset($_POST['action'])){
   if($_POST['action'] == 'export_to_sql'){
 
-    $inputFileType = PHPExcel_IOFactory::identify('./upload/'.$_POST['file']);
+    $inputFileType = PHPExcel_IOFactory::identify($folder.'/'.$_POST['file']);
     $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-    $objPHPExcel = PHPExcel_IOFactory::load('./upload/'.$_POST['file']);
+    $objPHPExcel = PHPExcel_IOFactory::load($folder.'/'.$_POST['file']);
 
     //  Get worksheet dimensions
     $sheet = $objPHPExcel->getSheet(0);
@@ -100,13 +102,21 @@ if(isset($_POST['action'])){
     <div class="container">
 
       <h1 class="title">Excel to Sql</h1>
-      <h2 class="subtitle">Upload file in folder name upload</h2>
+      <h2 class="subtitle">Upload files in the "upload" folder of the root folder</h2>
 
+      <p>Names of the field of the table in first line</p>
+<br />
       <form action="index.php" method="post">
         <input type="hidden" name="action" value="export_to_sql">
         <div class="columns">
           <div class="column">
-            <label class="label">File <small> (xlx, xlxs) </small> </label>
+            <label class="label">Folder</label>
+            <p class="control">
+              <input class="input" name="folder" type="text" placeholder="./upload" disabled>
+            </p>
+          </div>
+          <div class="column">
+            <label class="label">Files in folder "upload" <small> (xlx, xlxs) </small> </label>
             <p class="control">
               <select class="input" name="file">
                 <option value="0"> Files</option>
