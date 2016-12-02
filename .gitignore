@@ -53,3 +53,7 @@ Thumbs.db
 *.eot
 *.ttf
 *.woff
+
+# Fonts #
+*.xlx
+*.xlsx
